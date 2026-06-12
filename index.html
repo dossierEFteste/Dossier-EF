@@ -835,6 +835,9 @@ function renderHome(){
       <button id="homeAvisosBtn" style="${_hBtnStyle};position:absolute;top:20px;right:16px;padding:10px 14px;border-radius:10px;font-size:22px;cursor:pointer;line-height:1;display:${_hNAvisos>0?'flex':'none'};align-items:center;gap:6px">
         🔔${_hNAvisos>0?`<span style="background:#fff;color:#dc2626;border-radius:50%;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;padding:0 3px">${_hNAvisos}</span>`:''}
       </button>
+      <button id="homeCfgBtn" title="Configurações da Escola" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);position:absolute;top:20px;right:${_hNAvisos>0?'70px':'16px'};padding:10px 14px;border-radius:10px;font-size:22px;cursor:pointer;line-height:1;display:flex;align-items:center">
+        ⚙️
+      </button>
       ${S.logo
         ? `<img class="home-icon" src="${S.logo}" alt="Logotipo">`
         : `<img class="home-icon" src="icons/icon-192x192.png" alt="Ícone" onerror="this.style.display='none'">`}
@@ -871,6 +874,8 @@ function attachHomeEvents(){
   });
   const hab=document.getElementById('homeAvisosBtn');
   if(hab) hab.addEventListener('click',()=>{currentTab='avisos';render();});
+  const hcb=document.getElementById('homeCfgBtn');
+  if(hcb) hcb.addEventListener('click',()=>{ cfgModalOpen=true; render(); });
   const lb=document.getElementById('homeLogoutBtn');
   if(lb) lb.addEventListener('click',async()=>{
     if(confirm('Tens a certeza que queres terminar a sessão?')){
@@ -4171,7 +4176,6 @@ function renderCalendario(){
   return `<div>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
       <div class="section-title" style="margin-bottom:0">Calendário Letivo</div>
-      <button class="btn btn-primary" id="openCfgBtn">⚙️ Configurações da Escola</button>
     </div>
     <div class="grid-2 cal-layout" style="gap:20px;align-items:start">
       <div>
