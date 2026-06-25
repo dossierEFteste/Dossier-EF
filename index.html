@@ -1680,7 +1680,7 @@ async function carregarLinksCurtos(turmaId, userId, anoLetivo){
         const {error:insErr} = await supa.from('fichas_links').insert({code, user_id:userId, turma_id:String(turmaId), semestre:sem, ano_letivo:anoLetivo});
         if(insErr) throw insErr;
       }
-      const link=`https://TEUNOMEDEUTILIZADOR.github.io/Ficha-AA/ficha_aluno.html?c=${code}`;
+      const link=`https://dossierEFteste.github.io/Ficha-AA/ficha_aluno.html?c=${code}`;
       _fichaAALinks[sem]=link;
       if(el) el.textContent=link;
     }catch(e){
